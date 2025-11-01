@@ -156,14 +156,14 @@ profile:
 proxy-providers:
   BIZZ:
     type: file
-    path: "./providers/proxy/bizz.yaml"
+    path: "./proxy-provider/bizz.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 30
   TRIAL:
     type: file
-    path: "./providers/proxy/trial.yaml"
+    path: "./proxy-provider/trial.yaml"
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
@@ -213,37 +213,37 @@ rule-providers:
   adblock-oisd_big:
     type: http
     behavior: classical
-    path: "./providers/rule/adblock/oisd_big.yaml"
+    path: "./rule-provider/adblock/oisd_big.yaml"
     url: https://raw.githubusercontent.com/hillz2/openclash_adblock/main/oisd_big.yaml
     interval: 28800
   game-HOK:
     type: http
     behavior: classical
-    path: "./providers/rule/game/hok.yaml"
+    path: "./rule-provider/game/hok.yaml"
     url: https://raw.githubusercontent.com/wildan-pratama/clashrules/refs/heads/main/rule_provider/Game_HonorOfKings_Ports.yaml
     interval: 28800
   game-AOV:
     type: http
     behavior: classical
-    path: "./providers/rule/game/aov-udp.yaml"
+    path: "./rule-provider/game/aov-udp.yaml"
     url: https://raw.githubusercontent.com/wildan-pratama/clashrules/refs/heads/main/rule_provider/Game_ArenaOfValor_Ports.yaml
     interval: 28800
   sosmed-facebook:
     type: http
     behavior: classical
-    path: "./providers/rule/sosmed/facebook.yaml"
+    path: "./rule-provider/sosmed/facebook.yaml"
     url: https://raw.githubusercontent.com/wildan-pratama/clashrules/refs/heads/main/rule_provider/Social_Facebook.yaml
     interval: 28800
   sosmed-instagram:
     type: http
     behavior: classical
-    path: "./providers/rule/sosmed/instagram.yaml"
+    path: "./rule-provider/sosmed/instagram.yaml"
     url: https://raw.githubusercontent.com/wildan-pratama/clashrules/refs/heads/main/rule_provider/Social_Instagram.yaml
     interval: 28800
   sosmed-youtube:
     type: http
     behavior: classical
-    path: "./providers/rule/sosmed/youtube.yaml"
+    path: "./rule-provider/sosmed/youtube.yaml"
     url: https://raw.githubusercontent.com/wildan-pratama/clashrules/refs/heads/main/rule_provider/Stream_Youtube.yaml
     interval: 28800
 rules:
@@ -251,6 +251,6 @@ rules:
   - RULE-SET,sosmed-facebook,SOSMED
   - RULE-SET,sosmed-instagram,SOSMED
   - RULE-SET,sosmed-youtube,SOSMED
-  - RULE-SET,game-HOK,BEST-PING
-  - RULE-SET,game-AOV,BEST-PING
+  # - RULE-SET,game-HOK,BEST-PING
+  # - RULE-SET,game-AOV,BEST-PING
   - MATCH,AUTO
