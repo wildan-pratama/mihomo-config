@@ -202,8 +202,15 @@ proxy-groups:
     use:
       - BIZZ
       - TRIAL
+  - name: SOSMED
+    type: load-balance
+    strategy: consistent-hashing
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    use:
+      - BIZZ
 rule-providers:
-  oisd_big:
+  adblock-oisd_big:
     type: http
     behavior: classical
     path: "./providers/rule/adblock/oisd_big.yaml"
@@ -221,8 +228,29 @@ rule-providers:
     path: "./providers/rule/game/aov-udp.yaml"
     url: https://raw.githubusercontent.com/wildan-pratama/clashrules/refs/heads/main/rule_provider/Game_ArenaOfValor_Ports.yaml
     interval: 28800
+  sosmed-facebook:
+    type: http
+    behavior: classical
+    path: "./providers/rule/sosmed/facebook.yaml"
+    url: https://raw.githubusercontent.com/wildan-pratama/clashrules/refs/heads/main/rule_provider/Social_Facebook.yaml
+    interval: 28800
+  sosmed-instagram:
+    type: http
+    behavior: classical
+    path: "./providers/rule/sosmed/instagram.yaml"
+    url: https://raw.githubusercontent.com/wildan-pratama/clashrules/refs/heads/main/rule_provider/Social_Instagram.yaml
+    interval: 28800
+  sosmed-youtube:
+    type: http
+    behavior: classical
+    path: "./providers/rule/sosmed/youtube.yaml"
+    url: https://raw.githubusercontent.com/wildan-pratama/clashrules/refs/heads/main/rule_provider/Stream_Youtube.yaml
+    interval: 28800
 rules:
-  - RULE-SET,oisd_big,REJECT
-  #- RULE-SET,game-HOK,DIRECT
-  #- RULE-SET,game-AOV,DIRECT
+  - RULE-SET,adblock-oisd_big,REJECT
+  - RULE-SET,sosmed-facebook,SOSMED
+  - RULE-SET,sosmed-instagram,SOSMED
+  - RULE-SET,sosmed-youtube,SOSMED
+  - RULE-SET,game-HOK,BEST-PING
+  - RULE-SET,game-AOV,BEST-PING
   - MATCH,AUTO

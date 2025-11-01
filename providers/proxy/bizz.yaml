@@ -15,31 +15,17 @@ proxies:
       headers:
         Host: ava.game.naver.com.id3ray.jagoanvip.xyz
     udp: true
-  - name: vvip-cszczd1
-    server: ava.game.naver.com
-    port: 443
-    type: vmess
-    uuid: 3fd73cd3-8fa0-407d-b9df-09f234e1e9e4
-    alterId: 0
-    cipher: auto
-    tls: true
-    skip-cert-verify: true
-    servername: ava.game.naver.com.id3ray.jagoanvip.xyz
-    network: grpc
-    grpc-opts:
-      grpc-service-name: grpc
-    udp: true
-  - name: vvip-cszczd12
-    server: ava.game.naver.com.id3ray.jagoanvip.xyz
-    port: 443
-    type: vmess
-    uuid: 3fd73cd3-8fa0-407d-b9df-09f234e1e9e4
-    alterId: 0
-    cipher: auto
-    tls: true
-    skip-cert-verify: true
-    servername: ava.game.naver.com
-    network: grpc
-    grpc-opts:
-      grpc-service-name: grpc
-    udp: true
+  # - name: vvip-cszczd1
+  #   server: ava.game.naver.com
+  #   port: 443
+  #   type: vmess
+  #   uuid: 3fd73cd3-8fa0-407d-b9df-09f234e1e9e4
+  #   alterId: 0
+  #   cipher: auto
+  #   tls: true
+  #   skip-cert-verify: true
+  #   servername: ava.game.naver.com.id3ray.jagoanvip.xyz
+  #   network: grpc
+  #   grpc-opts:
+  #     grpc-service-name: grpc
+  #   udp: true
