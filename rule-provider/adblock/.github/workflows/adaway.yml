@@ -1,0 +1,84 @@
+name: Process AdAway Hosts
+
+on:
+  workflow_dispatch: # Allows manual trigger
+  schedule:
+    - cron: "0 0 * * *" # Runs daily at midnight UTC
+
+jobs:
+  process-hosts:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }} # Use the default GitHub token to push changes
+
+      # Step 2: Download the hosts.txt file
+      - name: Download hosts.txt
+        run: |
+          curl -o hosts.txt https://adaway.org/hosts.txt
+
+      # Step 3: Create the bash script
+      - name: Create transformation script
+        run: |
+          cat << 'EOF' > transform_hosts.sh
+          #!/bin/bash
+
+          # Input and output files
+          input_file="hosts.txt"
+          output_file="adaway.yaml"
+
+          # Process the file
+          awk '
+          # Remove localhost lines
+          $0 == "127.0.0.1  localhost" || $0 == "::1  localhost" { next }
+
+          # Replace `127.0.0.1 ` with `  - DOMAIN-SUFFIX,`
+          $1 == "127.0.0.1" { $1 = "  - DOMAIN-SUFFIX,"; print; next }
+
+          # Replace the first occurrence of `^# \[.*\]$` with the required text and `payload:`
+          /^# \[.*\]$/ && !seen_payload {
+            print "# OpenClash AdBlock: https://github.com/hillz2/openclash_adblock\n"
+            print "payload:"
+            seen_payload=1
+            next
+          }
+
+          # Remove all other lines matching `^# \[.*\]$`
+          /^# \[.*\]$/ { next }
+
+          # Skip empty lines immediately after `payload:`
+          seen_payload && $0 == "" { next }
+
+          # Print remaining lines
+          { print }
+          ' "$input_file" > "$output_file"
+
+          echo "Transformation complete. Output saved to $output_file"
+          EOF
+          chmod +x transform_hosts.sh
+
+      # Step 4: Run the transformation script
+      - name: Run transformation script
+        run: |
+          ./transform_hosts.sh
+          rm -fr transform_hosts.sh hosts.txt
+
+      # Step 5: Commit and push the processed file
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+          # Check if there are any changes to commit
+          if git diff --quiet; then
+            echo "No changes to commit."
+          else
+            git add adaway.yaml
+            git commit -m "Update adaway.yaml [skip ci]"
+            git push
+          fi
+

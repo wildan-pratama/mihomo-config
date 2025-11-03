@@ -1,0 +1,29 @@
+name: Download ABPindo block list
+
+on:
+  schedule:
+    - cron: 0 */12 * * *
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - name: adblock
+        run: |
+          echo "Downloading ABPindo list..."
+          curl -o domain.txt https://raw.githubusercontent.com/ABPindo/indonesianadblockrules/refs/heads/master/subscriptions/domain.txt
+          # Add source comments and payload header
+          echo -e "# Source: https://github.com/ABPindo/indonesianadblockrules" > abpindo.yaml
+          echo -e "# OpenClash AdBlock: https://github.com/hillz2/openclash_adblock" >> abpindo.yaml
+          echo -e "\npayload:" >> abpindo.yaml
+
+          # Process the domain list and add '- DOMAIN-SUFFIX,'
+          while read -r domain; do
+            echo "  - DOMAIN-SUFFIX,${domain}" >> abpindo.yaml
+          done < domain.txt
+          rm -fr domain.txt
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Automatic update
