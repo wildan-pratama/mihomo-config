@@ -8,7 +8,7 @@ allow-lan: true
 log-level: warning
 ipv6: true
 external-controller: 127.0.0.1:9097
-external-ui: ./zashboard
+external-ui: ./ui/zashboard
 external-ui-name: zashboard
 external-ui-url: https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip
 external-controller-unix: /var/tmp/mihomo/mihomo.sock
