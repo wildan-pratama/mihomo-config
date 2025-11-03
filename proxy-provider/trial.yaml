@@ -45,19 +45,3 @@ proxies:
     headers:
       Host: ava.game.naver.com.lsvly.qzz.io
   udp: true
-- name: BerkahTBvpnstore
-  server: ava.game.naver
-  port: 443
-  type: vmess
-  uuid: ecd300a2-c0c4-4eaa-97e7-201506f0c897
-  alterId: 0
-  cipher: auto
-  tls: true
-  skip-cert-verify: true
-  servername: ava.game.naver.id1.ubaistore.my.id
-  network: ws
-  ws-opts:
-    path: /vmessws
-    headers:
-      Host: ava.game.naver.id1.ubaistore.my.id
-  udp: true
