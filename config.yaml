@@ -225,31 +225,31 @@ rule-providers:
     type: http
     behavior: classical
     path: "./rule-provider/game/hok.yaml"
-    url: https://raw.githubusercontent.com/wildan-pratama/clashrules/refs/heads/main/rule_provider/Game_HonorOfKings_Ports.yaml
+    url: https://raw.githubusercontent.com/wildan-pratama/clashrules/main/rule_provider/Game_HonorOfKings_Ports.yaml
     interval: 28800
   game-AOV:
     type: http
     behavior: classical
     path: "./rule-provider/game/aov-udp.yaml"
-    url: https://raw.githubusercontent.com/wildan-pratama/clashrules/refs/heads/main/rule_provider/Game_ArenaOfValor_Ports.yaml
+    url: https://raw.githubusercontent.com/wildan-pratama/clashrules/main/rule_provider/Game_ArenaOfValor_Ports.yaml
     interval: 28800
   sosmed-facebook:
     type: http
     behavior: classical
     path: "./rule-provider/sosmed/facebook.yaml"
-    url: https://raw.githubusercontent.com/wildan-pratama/clashrules/refs/heads/main/rule_provider/Social_Facebook.yaml
+    url: https://raw.githubusercontent.com/wildan-pratama/clashrules/main/rule_provider/Social_Facebook.yaml
     interval: 28800
   sosmed-instagram:
     type: http
     behavior: classical
     path: "./rule-provider/sosmed/instagram.yaml"
-    url: https://raw.githubusercontent.com/wildan-pratama/clashrules/refs/heads/main/rule_provider/Social_Instagram.yaml
+    url: https://raw.githubusercontent.com/wildan-pratama/clashrules/main/rule_provider/Social_Instagram.yaml
     interval: 28800
   sosmed-youtube:
     type: http
     behavior: classical
     path: "./rule-provider/sosmed/youtube.yaml"
-    url: https://raw.githubusercontent.com/wildan-pratama/clashrules/refs/heads/main/rule_provider/Stream_Youtube.yaml
+    url: https://raw.githubusercontent.com/wildan-pratama/clashrules/main/rule_provider/Stream_Youtube.yaml
     interval: 28800
 rules:
 - RULE-SET,adblock-oisd_big,REJECT
