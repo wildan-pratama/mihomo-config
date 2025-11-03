@@ -1,32 +1,47 @@
 proxies:
-  - name: Rotate ID-SG
-    server: ava.game.naver.com
-    port: 443
-    type: vmess
-    uuid: daf56748-0532-40d0-bda1-9ae486a6abef
-    alterId: 0
-    cipher: none
-    tls: true
-    skip-cert-verify: true
-    network: ws
-    servername: ava.game.naver.com.freshcare.ggff.net
-    ws-opts:
-      path: /vmess
-      headers:
-        Host: ava.game.naver.com.freshcare.ggff.net
-    udp: true
-  - name: Rotate ID-SG tr
-    server: ava.game.naver.com
-    port: 443
-    type: trojan
-    password: daf56748-0532-40d0-bda1-9ae486a6abef
-    cipher: none
-    tls: true
-    skip-cert-verify: true
-    network: ws
-    sni: ava.game.naver.com.freshcare.ggff.net
-    ws-opts:
-      path: /trojan
-      headers:
-        Host: ava.game.naver.com.freshcare.ggff.net
-    udp: true
+- name: Rotate ID-SG
+  server: ava.game.naver.com
+  port: 443
+  type: vmess
+  uuid: daf56748-0532-40d0-bda1-9ae486a6abef
+  alterId: 0
+  cipher: none
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  servername: ava.game.naver.com.freshcare.ggff.net
+  ws-opts:
+    path: /vmess
+    headers:
+      Host: ava.game.naver.com.freshcare.ggff.net
+  udp: true
+- name: Rotate ID-SG tr
+  server: ava.game.naver.com
+  port: 443
+  type: trojan
+  password: daf56748-0532-40d0-bda1-9ae486a6abef
+  cipher: none
+  tls: true
+  skip-cert-verify: true
+  network: ws
+  sni: ava.game.naver.com.freshcare.ggff.net
+  ws-opts:
+    path: /trojan
+    headers:
+      Host: ava.game.naver.com.freshcare.ggff.net
+  udp: true
+- name: (SG) Digitalocean Biz
+  server: ava.game.naver.com
+  port: 443
+  type: vless
+  uuid: 82109499-f29e-4c6c-9d50-0b4052d8e14f
+  tls: true
+  servername: ava.game.naver.com.lsvly.qzz.io
+  skip-cert-verify: true
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /sg-do
+    headers:
+      Host: ava.game.naver.com.lsvly.qzz.io
+  udp: true
