@@ -45,19 +45,3 @@ proxies:
     headers:
       Host: ava.game.naver.com.lsvly.qzz.io
   udp: true
-- name: VMess-WS-TLS-443-5000an
-  server: ava.game.naver
-  port: 443
-  type: vmess
-  uuid: 11403980-7be6-4993-973f-213d5b4624e7
-  alterId: 0
-  cipher: auto
-  tls: true
-  skip-cert-verify: true
-  servername: ava.game.naver.sing-box.biz.id
-  network: ws
-  ws-opts:
-    path: /automated-build-to-content-marketing/buy-vmess-ws-pm-telegram-at-synricha
-    headers:
-      Host: ava.game.naver.sing-box.biz.id
-  udp: true
