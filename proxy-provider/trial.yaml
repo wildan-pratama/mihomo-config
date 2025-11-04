@@ -1,35 +1,4 @@
 proxies:
-- name: Rotate ID-SG
-  server: ava.game.naver.com
-  port: 443
-  type: vmess
-  uuid: daf56748-0532-40d0-bda1-9ae486a6abef
-  alterId: 0
-  cipher: none
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  servername: ava.game.naver.com.freshcare.ggff.net
-  ws-opts:
-    path: /vmess
-    headers:
-      Host: ava.game.naver.com.freshcare.ggff.net
-  udp: true
-- name: Rotate ID-SG tr
-  server: ava.game.naver.com
-  port: 443
-  type: trojan
-  password: daf56748-0532-40d0-bda1-9ae486a6abef
-  cipher: none
-  tls: true
-  skip-cert-verify: true
-  network: ws
-  sni: ava.game.naver.com.freshcare.ggff.net
-  ws-opts:
-    path: /trojan
-    headers:
-      Host: ava.game.naver.com.freshcare.ggff.net
-  udp: true
 - name: (SG) Digitalocean Biz
   server: ava.game.naver.com
   port: 443
