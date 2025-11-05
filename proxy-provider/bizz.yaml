@@ -15,22 +15,22 @@ proxies:
     headers:
       Host: ava.game.naver.com.id3ray.jagoanvip.xyz
   udp: true
-# - name: id3ray vmess ws-cdn
-#   server: ava.game.naver.com
-#   port: 443
-#   type: vmess
-#   uuid: 3fd73cd3-8fa0-407d-b9df-09f234e1e9e4
-#   alterId: 0
-#   cipher: auto
-#   tls: true
-#   skip-cert-verify: true
-#   servername: ava.game.naver.com.cdn-id3ray.jagoanvip.xyz
-#   network: ws
-#   ws-opts:
-#     path: /vvip
-#     headers:
-#       Host: ava.game.naver.com.cdn-id3ray.jagoanvip.xyz
-#   udp: true
+- name: id3ray vmess ws-cdn
+  server: investors.spotify.com
+  port: 443
+  type: vmess
+  uuid: 3fd73cd3-8fa0-407d-b9df-09f234e1e9e4
+  alterId: 0
+  cipher: auto
+  tls: true
+  skip-cert-verify: true
+  servername: investors.spotify.com.id3ray.jagoanvip.xyz
+  network: ws
+  ws-opts:
+    path: /vvip
+    headers:
+      Host: investors.spotify.com.id3ray.jagoanvip.xyz
+  udp: true
 # - name: vvip-cszczd1
 #   server: id3ray.jagoanvip.xyz
 #   port: 443

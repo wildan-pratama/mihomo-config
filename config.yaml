@@ -256,8 +256,8 @@ rules:
 - RULE-SET,sosmed-facebook,SOSMED
 - RULE-SET,sosmed-instagram,SOSMED
 - RULE-SET,sosmed-youtube,SOSMED
-- RULE-SET,game-HOK,DIRECT
-- RULE-SET,game-AOV,DIRECT
-- RULE-SET,game-HOK,BEST-PING
-- RULE-SET,game-AOV,BEST-PING
+# - RULE-SET,game-HOK,DIRECT
+# - RULE-SET,game-AOV,DIRECT
+# - RULE-SET,game-HOK,BEST-PING
+# - RULE-SET,game-AOV,BEST-PING
 - MATCH,AUTO
