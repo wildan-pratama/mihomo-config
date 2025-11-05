@@ -154,10 +154,10 @@ profile:
   store-selected: true
   store-fake-ip: true
 proxy-providers:
-  BIZZ:
+  JAGOANSSH:
     type: file
-    path: "./proxy-provider/bizz.yaml"
-    url: https://raw.githubusercontent.com/wildan-pratama/mihomo-config/refs/heads/main/proxy-provider/bizz.yaml
+    path: "./proxy-provider/jagoan.yaml"
+    url: https://raw.githubusercontent.com/wildan-pratama/mihomo-config/refs/heads/main/proxy-provider/jagoan.yaml
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
@@ -174,7 +174,7 @@ proxy-groups:
 - name: AUTO
   type: select
   use:
-  - BIZZ
+  - JAGOANSSH
   - TRIAL
   proxies:
   - LOAD-BALANCE
@@ -187,7 +187,7 @@ proxy-groups:
   url: http://www.gstatic.com/generate_204
   interval: 300
   use:
-  - BIZZ
+  - JAGOANSSH
   - TRIAL
 - name: BEST-PING
   type: url-test
@@ -195,7 +195,7 @@ proxy-groups:
   interval: 300
   tolerance: 50
   use:
-  - BIZZ
+  - JAGOANSSH
   - TRIAL
   proxies:
   - DIRECT
@@ -204,7 +204,7 @@ proxy-groups:
   url: http://www.gstatic.com/generate_204
   interval: 300
   use:
-  - BIZZ
+  - JAGOANSSH
   - TRIAL
 - name: SOSMED
   type: load-balance
@@ -212,7 +212,7 @@ proxy-groups:
   url: http://www.gstatic.com/generate_204
   interval: 300
   use:
-  - BIZZ
+  - JAGOANSSH
   - TRIAL
 rule-providers:
   adblock-oisd_big:
