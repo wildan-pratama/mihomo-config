@@ -251,13 +251,20 @@ rule-providers:
     path: "./rule-provider/sosmed/youtube.yaml"
     url: https://raw.githubusercontent.com/wildan-pratama/clashrules/main/rule_provider/Stream_Youtube.yaml
     interval: 28800
+  sosmed-whatsapp:
+    type: http
+    behavior: classical
+    path: "./rule-provider/sosmed/whatsapp.yaml"
+    url: https://raw.githubusercontent.com/wildan-pratama/clashrules/main/rule_provider/Social_WhatsApp.yaml
+    interval: 28800
 rules:
 - RULE-SET,adblock-oisd_big,REJECT
 - RULE-SET,sosmed-facebook,SOSMED
 - RULE-SET,sosmed-instagram,SOSMED
 - RULE-SET,sosmed-youtube,SOSMED
-# - RULE-SET,game-HOK,DIRECT
-# - RULE-SET,game-AOV,DIRECT
-# - RULE-SET,game-HOK,BEST-PING
-# - RULE-SET,game-AOV,BEST-PING
+- RULE-SET,sosmed-whatsapp,DIRECT
+- RULE-SET,game-HOK,DIRECT
+- RULE-SET,game-AOV,DIRECT
+- RULE-SET,game-HOK,BEST-PING
+- RULE-SET,game-AOV,BEST-PING
 - MATCH,AUTO
