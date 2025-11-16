@@ -7,7 +7,7 @@ tproxy-port: 7894
 allow-lan: true
 log-level: warning
 ipv6: true
-external-controller: 0.0.0.0:9097
+external-controller: 0.0.0.0:9090
 external-ui: ./ui/zashboard
 external-ui-url: https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip
 external-controller-unix: /var/tmp/mihomo/mihomo.sock
@@ -27,18 +27,19 @@ tun:
   auto-route: true
   strict-route: false
   auto-detect-interface: true
+  device: meta0
   dns-hijack:
   - any:53
-# sniffer:
-#   enable: true
-#   sniff:
-#     HTTP:
-#       ports: [80, 8080-8880]
-#       override-destination: true
-#     TLS:
-#       ports: [443, 8443]
-#     QUIC:
-#       ports: [443, 8443]
+sniffer:
+  enable: false
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
 dns:
   enable: true
   ipv6: true
@@ -160,12 +161,23 @@ dns:
   - "*.ffxiv.com"
   - "*.mcdn.bilivideo.cn"
   - +.media.dssott.com
+geo-auto-update: false
+geo-update-interval: 24
+geox-url:
+  geoip: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+  asn: "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
+global-client-fingerprint: android
+global-ua: clash.meta
 profile:
   store-selected: true
   store-fake-ip: true
 proxy-providers:
   JAGOANSSH:
     type: file
+    # interface-name: wlp2s0
+    enable: true
     path: "./proxy-provider/jagoan.yaml"
     url: https://raw.githubusercontent.com/wildan-pratama/mihomo-config/refs/heads/main/proxy-provider/jagoan.yaml
     health-check:
@@ -174,6 +186,7 @@ proxy-providers:
       interval: 30
   TRIAL:
     type: file
+    enable: true
     path: "./proxy-provider/trial.yaml"
     url: https://raw.githubusercontent.com/wildan-pratama/mihomo-config/refs/heads/main/proxy-provider/trial.yaml
     health-check:
@@ -194,11 +207,30 @@ proxy-groups:
 - name: LOAD-BALANCE
   type: load-balance
   strategy: consistent-hashing
+  interface-name: enp0s20u1
   url: http://www.gstatic.com/generate_204
   interval: 300
   use:
   - JAGOANSSH
   - TRIAL
+# - name: LOAD-BALANCE-USB
+#   type: load-balance
+#   interface-name: enp0s20u1
+#   strategy: consistent-hashing
+#   url: http://www.gstatic.com/generate_204
+#   interval: 300
+#   use:
+#   - JAGOANSSH
+#   - TRIAL
+# - name: LOAD-BALANCE-WIFI
+#   type: load-balance
+#   interface-name: wlp2s0
+#   strategy: consistent-hashing
+#   url: http://www.gstatic.com/generate_204
+#   interval: 300
+#   use:
+#   - JAGOANSSH
+#   - TRIAL
 - name: BEST-PING
   type: url-test
   url: http://www.gstatic.com/generate_204
@@ -273,8 +305,8 @@ rules:
 - RULE-SET,sosmed-instagram,SOSMED
 - RULE-SET,sosmed-youtube,SOSMED
 - RULE-SET,sosmed-whatsapp,DIRECT
-- RULE-SET,game-HOK,DIRECT
-- RULE-SET,game-AOV,DIRECT
-- RULE-SET,game-HOK,BEST-PING
-- RULE-SET,game-AOV,BEST-PING
+# - RULE-SET,game-HOK,DIRECT
+# - RULE-SET,game-AOV,DIRECT
+# - RULE-SET,game-HOK,BEST-PING
+# - RULE-SET,game-AOV,BEST-PING
 - MATCH,AUTO

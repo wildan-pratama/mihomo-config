@@ -1,16 +1,17 @@
 proxies:
-- name: (SG) Digitalocean Biz
-  server: investors.spotify.com
+- name: jaystore
+  server: id.jayxstore.tech
   port: 443
-  type: vless
-  uuid: 82109499-f29e-4c6c-9d50-0b4052d8e14f
+  type: vmess
+  uuid: d517292d-ddb7-4b10-af18-1c2385b1dc1b
+  alterId: 0
+  cipher: auto
   tls: true
-  servername: investors.spotify.com.lsvly.qzz.io
   skip-cert-verify: true
-  client-fingerprint: chrome
+  servername: chat.whatsapp.com
   network: ws
   ws-opts:
-    path: /sg-do
+    path: /vmess
     headers:
-      Host: investors.spotify.com.lsvly.qzz.io
+      Host: id.jayxstore.tech
   udp: true
