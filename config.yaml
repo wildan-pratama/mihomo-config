@@ -238,9 +238,9 @@ proxy-groups:
   tolerance: 50
   use:
   - JAGOANSSH
-  - TRIAL
-  proxies:
-  - DIRECT
+  # - TRIAL
+  # proxies:
+  # - DIRECT
 - name: FALLBACK
   type: fallback
   url: http://www.gstatic.com/generate_204
@@ -303,10 +303,10 @@ rules:
 - RULE-SET,adblock-oisd_big,REJECT
 - RULE-SET,sosmed-facebook,SOSMED
 - RULE-SET,sosmed-instagram,SOSMED
-- RULE-SET,sosmed-youtube,SOSMED
+- RULE-SET,sosmed-youtube,DIRECT
 - RULE-SET,sosmed-whatsapp,DIRECT
 # - RULE-SET,game-HOK,DIRECT
 # - RULE-SET,game-AOV,DIRECT
-# - RULE-SET,game-HOK,BEST-PING
-# - RULE-SET,game-AOV,BEST-PING
+- RULE-SET,game-HOK,BEST-PING
+- RULE-SET,game-AOV,BEST-PING
 - MATCH,AUTO

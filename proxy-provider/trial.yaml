@@ -1,17 +1,29 @@
 proxies:
-- name: jaystore
-  server: id.jayxstore.tech
-  port: 443
-  type: vmess
-  uuid: d517292d-ddb7-4b10-af18-1c2385b1dc1b
-  alterId: 0
-  cipher: auto
-  tls: true
-  skip-cert-verify: true
-  servername: chat.whatsapp.com
-  network: ws
-  ws-opts:
-    path: /vmess
-    headers:
-      Host: id.jayxstore.tech
-  udp: true
+  - name: natanvpn
+    server: 5.round.web.id
+    port: 80
+    type: vless
+    uuid: 62bc49b3-f1e8-42f3-952a-2982b65550d7
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    servername: 5.round.web.id
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: 5.round.web.id
+    udp: true
+  - name: natanvpn 2
+    server: 5.round.web.id
+    port: 443
+    type: vless
+    uuid: 62bc49b3-f1e8-42f3-952a-2982b65550d7
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: 5.round.web.id
+    network: grpc
+    grpc-opts:
+      grpc-service-name: vless
+    udp: true
